@@ -1,8 +1,11 @@
-﻿namespace Huggy.Models
+﻿using System.Collections.Generic;
+
+namespace Huggy.Models
 {
    public class ReturnOf<T> : IReturnOf<T>
    {
       public string Reason { get; }
+      public Dictionary<string, string> Reasons { get; }
       public int StatusCode { get; }
       public T Data { get; }
       public bool IsValid
@@ -15,14 +18,18 @@
 
       public ReturnOf(int statusCode, T data)
       {
+         Reasons = new Dictionary<string, string>();
          StatusCode = statusCode;
          Data = data;
+         Reasons.Clear();
       }
 
       public ReturnOf(int statusCode, string reason)
       {
+         Reasons = new Dictionary<string, string>();
          StatusCode = statusCode;
          Reason = reason;
+         Reasons.Add("Error", reason);
       }
 
       public static ReturnOf<T> CreateSuccessStatusCode(int statusCode, T data)

@@ -20,7 +20,14 @@ namespace HuggyWeb.Controllers
       public async Task<ActionResult> Get()
       {
          IReturnOf<List<AgentList>> result = await HttpClientHuggy.Agent.GetListAsync(null);
-         return (result.IsValid) ? Ok(result.Data) : BadRequest(new { Error = result.Reason });
+         return (result.IsValid) ? Ok(result.Data) : BadRequest(result.Reasons);
+      }
+
+      [HttpGet("{id}")]
+      public async Task<ActionResult> Get(int id)
+      {
+         IReturnOf<Agent> result = await HttpClientHuggy.Agent.GetAsync(id);
+         return (result.IsValid) ? Ok(result.Data) : BadRequest(result.Reasons);
       }
    }
 }
