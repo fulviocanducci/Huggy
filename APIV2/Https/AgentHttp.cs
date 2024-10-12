@@ -10,7 +10,6 @@ namespace APIV2.Https
    {
       private readonly HttpClient _httpClient;
       private const string UrlBase = "v2/agents";
-
       public AgentHttp(HttpClient httpClient)
       {
          _httpClient = httpClient;
@@ -25,6 +24,23 @@ namespace APIV2.Https
       public async Task<IReturnOf<Agent>> GetAsync(int id)
       {
          HttpResponseMessage message = await _httpClient.GetAsync($"{UrlBase}/{id}");
+         return await message.ReadOfTypeAsync<Agent>();
+      }
+
+      public async Task PostAsync(AgentCreate model)
+      {
+         HttpResponseMessage message = await _httpClient.PostAsync($"{UrlBase}", model);
+         await message.ReadOfTypeAsync<Agent>();
+      }
+
+      public async Task PostAsync(string email, int type)
+      {
+         await PostAsync(new AgentCreate(email, type));
+      }
+
+      public async Task<IReturnOf<Agent>> PutAsync(Agent model, int id)
+      {
+         HttpResponseMessage message = await _httpClient.PutAsync($"{UrlBase}/{id}", model);
          return await message.ReadOfTypeAsync<Agent>();
       }
    }

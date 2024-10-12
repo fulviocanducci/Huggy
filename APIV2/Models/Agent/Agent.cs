@@ -1,14 +1,9 @@
 ﻿using System.Text.Json.Serialization;
 namespace APIV2.Models.Agent
 {
-   public class Agent
+
+   public class Agent : AgentBase<string>
    {
-      [JsonPropertyName("id")]
-      public string Id { get; set; }
-
-      [JsonPropertyName("name")]
-      public string Name { get; set; }
-
       [JsonPropertyName("email")]
       public string Email { get; set; }
 
