@@ -1,4 +1,4 @@
-﻿namespace APIV2.Models.Agent
+﻿namespace Huggy.Models.Agent
 {
    public class AgentList : AgentBase<int>
    {

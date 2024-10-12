@@ -1,8 +1,8 @@
-﻿using APIV2.Configurations;
-using APIV2.Https;
+﻿using Huggy.Configurations;
+using Huggy.Https;
 using System;
 using System.Net.Http;
-namespace APIV2
+namespace Huggy
 {
 
    public class HttpClientHuggy : IHttpClientHuggy

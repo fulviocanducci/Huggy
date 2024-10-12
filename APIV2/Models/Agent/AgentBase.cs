@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace APIV2.Models.Agent
+namespace Huggy.Models.Agent
 {
    public abstract class AgentBase<T>
    {

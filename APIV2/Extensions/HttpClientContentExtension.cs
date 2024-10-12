@@ -1,4 +1,4 @@
-﻿using APIV2.Models;
+﻿using Huggy.Models;
 using System;
 using System.Net.Http;
 using System.Text;
@@ -6,7 +6,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace APIV2.Extensions
+namespace Huggy.Extensions
 {
    internal static class HttpClientContentExtension
    {

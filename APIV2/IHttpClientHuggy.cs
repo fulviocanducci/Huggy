@@ -1,9 +1,9 @@
-﻿using APIV2.Https;
+﻿using Huggy.Https;
 
-namespace APIV2
+namespace Huggy
 {
-    public interface IHttpClientHuggy
-    {
-        IAgentHttp Agent { get; }
-    }
+   public interface IHttpClientHuggy
+   {
+      IAgentHttp Agent { get; }
+   }
 }

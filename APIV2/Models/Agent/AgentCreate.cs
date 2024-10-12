@@ -1,5 +1,5 @@
 ﻿using System.Text.Json.Serialization;
-namespace APIV2.Models.Agent
+namespace Huggy.Models.Agent
 {
    public class AgentCreate
    {

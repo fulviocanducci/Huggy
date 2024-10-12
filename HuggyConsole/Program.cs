@@ -1,7 +1,7 @@
-﻿using APIV2;
-using APIV2.Configurations;
-using APIV2.Models;
-using APIV2.Models.Agent;
+﻿using Huggy;
+using Huggy.Configurations;
+using Huggy.Models;
+using Huggy.Models.Agent;
 
 namespace HuggyConsole
 {

@@ -1,10 +1,10 @@
-﻿using APIV2.Extensions;
-using APIV2.Models;
-using APIV2.Models.Agent;
+﻿using Huggy.Extensions;
+using Huggy.Models;
+using Huggy.Models.Agent;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-namespace APIV2.Https
+namespace Huggy.Https
 {
    public class AgentHttp : IAgentHttp
    {

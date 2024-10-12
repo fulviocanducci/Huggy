@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace APIV2.Models
+namespace Huggy.Models
 {
    public sealed class ReasonResult
    {

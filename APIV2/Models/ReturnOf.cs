@@ -1,4 +1,4 @@
-﻿namespace APIV2.Models
+﻿namespace Huggy.Models
 {
    public class ReturnOf<T> : IReturnOf<T>
    {
