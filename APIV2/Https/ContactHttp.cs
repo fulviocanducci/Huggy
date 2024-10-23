@@ -2,6 +2,7 @@
 using Huggy.Models;
 using Huggy.Models.Contacts;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 namespace Huggy.Https
@@ -35,12 +36,27 @@ namespace Huggy.Https
       public async Task<IReturnOf<Contact>> PostAsync(ContactCreate model)
       {
          HttpResponseMessage message = await _httpClient.PostAsync($"{UrlBase}", model);
-         return await message.ReadOfTypeAsync<Contact>();
+         IEnumerable<string> item = message
+            .Headers
+            .Where(x => x.Key.ToLower() == "location")
+            .Select(c => c.Value)
+            .FirstOrDefault();
+         if (item != null && item.Any())
+         {
+            string locationId = item
+               .ToList()[0]
+               .Replace(@"/clients/", "");
+            if (!string.IsNullOrEmpty(locationId) && int.TryParse(locationId, out int id))
+            {
+               return await GetAsync(id);
+            }
+         }
+         return null;
       }
 
       public async Task<IReturnOf<string>> PutAsync(ContactUpdate model, int id)
       {
-         HttpResponseMessage message = await _httpClient.PostAsync($"{UrlBase}/{id}", model);
+         HttpResponseMessage message = await _httpClient.PutAsync($"{UrlBase}/{id}", model);
          return await message.ReadOfTypeAsync<string>();
       }
    }

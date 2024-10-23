@@ -17,7 +17,7 @@ namespace Huggy
       public HttpClientHuggy(HttpClient httpClient, IConfigurationHuggy configurationHuggy)
       {
          HttpClient = httpClient;
-         HttpClient.BaseAddress = GetBaseAddress();
+         HttpClient.BaseAddress = GetBaseAddress();         
          httpClient.DefaultRequestHeaders.Clear();
          httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", configurationHuggy.ContentType);
          httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Accept", configurationHuggy.Accept);
