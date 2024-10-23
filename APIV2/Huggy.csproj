@@ -3,18 +3,17 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Title>Huggy</Title>
-    <Description>Huggy v1.0.0</Description>
-    <RepositoryUrl>https://github.com/fulviocanducci/Huggy</RepositoryUrl>
+    <Description>Huggy v1.0.0</Description>    
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Internals\" />
+    <Compile Remove="Internals\**" />
+    <EmbeddedResource Remove="Internals\**" />
+    <None Remove="Internals\**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="https:\github.com\fulviocanducci\Huggy\blob\master\README.md" />
-  </ItemGroup>
+  
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
