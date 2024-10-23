@@ -4,7 +4,6 @@ using System;
 using System.Net.Http;
 namespace Huggy
 {
-
    public class HttpClientHuggy : IHttpClientHuggy
    {
       public const string BaseAddress = "https://api.huggy.app";
@@ -23,11 +22,13 @@ namespace Huggy
          httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", configurationHuggy.ContentType);
          httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Accept", configurationHuggy.Accept);
          httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", configurationHuggy.Authorization);
-         Agent = new AgentHttp(HttpClient);
+         Agents = new AgentHttp(HttpClient);
          Flows = new FlowsHttp(HttpClient);
+         Contacts = new ContactHttp(HttpClient);
       }
 
-      public IAgentHttp Agent { get; }
+      public IAgentHttp Agents { get; }
       public IFlowsHttp Flows { get; }
+      public IContactHttp Contacts { get; }
    }
 }

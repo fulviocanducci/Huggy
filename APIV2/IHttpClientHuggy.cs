@@ -4,7 +4,8 @@ namespace Huggy
 {
    public interface IHttpClientHuggy
    {
-      IAgentHttp Agent { get; }
+      IAgentHttp Agents { get; }
       IFlowsHttp Flows { get; }
+      IContactHttp Contacts { get; }
    }
 }
