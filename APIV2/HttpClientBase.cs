@@ -24,8 +24,10 @@ namespace Huggy
          httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Accept", configurationHuggy.Accept);
          httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", configurationHuggy.Authorization);
          Agent = new AgentHttp(HttpClient);
+         Flows = new FlowsHttp(HttpClient);
       }
 
       public IAgentHttp Agent { get; }
+      public IFlowsHttp Flows { get; }
    }
 }

@@ -5,7 +5,6 @@ using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-
 namespace Huggy.Extensions
 {
    internal static class HttpClientContentExtension
@@ -15,106 +14,75 @@ namespace Huggy.Extensions
          DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
       };
 
+      internal static StringContent CreateContent(string json)
+      {
+         return new StringContent
+           (
+           json,
+           Encoding.UTF8,
+           "application/json"
+           );
+      }
+
       public static async Task<IReturnOf<T>> ReadOfTypeAsync<T>(this HttpResponseMessage message)
       {
+         string json = await message.Content.ReadAsStringAsync();
          if (message.IsSuccessStatusCode)
          {
-            var json = await message.Content.ReadAsStringAsync();
             T data = JsonSerializer.Deserialize<T>(json, JsonSerializerOptions);
             return ReturnOf<T>.CreateSuccessStatusCode((int)message.StatusCode, data);
          }
-         ReasonResult reasonResult = JsonSerializer.Deserialize<ReasonResult>(await message.Content.ReadAsStringAsync());
+         ReasonResult reasonResult = JsonSerializer.Deserialize<ReasonResult>(json);
          return ReturnOf<T>.CreateErrorStatusCode((int)message.StatusCode, reasonResult.Reason);
       }
 
       public static async Task<HttpResponseMessage> PostAsync<T>(this HttpClient client, string url, T model) where T : class, new()
       {
-         StringContent content = new StringContent
-            (
-            JsonSerializer.Serialize(model),
-            Encoding.UTF8,
-            "application/json"
-            );
+         StringContent content = CreateContent(JsonSerializer.Serialize(model));
          return await client.PostAsync(url, content);
       }
 
       public static async Task<HttpResponseMessage> PostAsync<T>(this HttpClient client, string url, T model, CancellationToken cancellationToken) where T : class, new()
       {
-         StringContent content = new StringContent
-            (
-            JsonSerializer.Serialize(model),
-            Encoding.UTF8,
-            "application/json"
-            );
+         StringContent content = CreateContent(JsonSerializer.Serialize(model));
          return await client.PostAsync(url, content, cancellationToken);
       }
 
       public static async Task<HttpResponseMessage> PostAsync<T>(this HttpClient client, Uri url, T model) where T : class, new()
       {
-         StringContent content = new StringContent
-            (
-            JsonSerializer.Serialize(model),
-            Encoding.UTF8,
-            "application/json"
-            );
+         StringContent content = CreateContent(JsonSerializer.Serialize(model));
          return await client.PostAsync(url, content);
       }
 
       public static async Task<HttpResponseMessage> PostAsync<T>(this HttpClient client, Uri url, T model, CancellationToken cancellationToken) where T : class, new()
       {
-         StringContent content = new StringContent
-            (
-            JsonSerializer.Serialize(model),
-            Encoding.UTF8,
-            "application/json"
-            );
+         StringContent content = CreateContent(JsonSerializer.Serialize(model));
          return await client.PostAsync(url, content, cancellationToken);
       }
 
 
       public static async Task<HttpResponseMessage> PutAsync<T>(this HttpClient client, string url, T model) where T : class, new()
       {
-         StringContent content = new StringContent
-            (
-            JsonSerializer.Serialize(model),
-            Encoding.UTF8,
-            "application/json"
-            );
+         StringContent content = CreateContent(JsonSerializer.Serialize(model));
          return await client.PutAsync(url, content);
       }
 
       public static async Task<HttpResponseMessage> PutAsync<T>(this HttpClient client, string url, T model, CancellationToken cancellationToken) where T : class, new()
       {
-         StringContent content = new StringContent
-            (
-            JsonSerializer.Serialize(model),
-            Encoding.UTF8,
-            "application/json"
-            );
+         StringContent content = CreateContent(JsonSerializer.Serialize(model));
          return await client.PutAsync(url, content, cancellationToken);
       }
 
       public static async Task<HttpResponseMessage> PutAsync<T>(this HttpClient client, Uri url, T model) where T : class, new()
       {
-         StringContent content = new StringContent
-            (
-            JsonSerializer.Serialize(model),
-            Encoding.UTF8,
-            "application/json"
-            );
+         StringContent content = CreateContent(JsonSerializer.Serialize(model));
          return await client.PutAsync(url, content);
       }
 
       public static async Task<HttpResponseMessage> PutAsync<T>(this HttpClient client, Uri url, T model, CancellationToken cancellationToken) where T : class, new()
       {
-         StringContent content = new StringContent
-            (
-            JsonSerializer.Serialize(model),
-            Encoding.UTF8,
-            "application/json"
-            );
+         StringContent content = CreateContent(JsonSerializer.Serialize(model));
          return await client.PutAsync(url, content, cancellationToken);
       }
-
    }
 }

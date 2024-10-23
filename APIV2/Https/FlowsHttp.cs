@@ -17,7 +17,7 @@ namespace Huggy.Https
 
       public async Task<IReturnOf<FlowReason>> PostAsync(string flowId, string contactId, Flow model)
       {
-         HttpResponseMessage message = await _httpClient.PostAsync($"{UrlBase}{flowId}/contact/{contactId}/exec", model);
+         HttpResponseMessage message = await _httpClient.PostAsync($"{UrlBase}/{flowId}/contact/{contactId}/exec", model);
          return await message.ReadOfTypeAsync<FlowReason>();
       }
    }
