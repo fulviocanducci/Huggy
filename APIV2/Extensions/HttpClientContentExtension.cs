@@ -29,7 +29,9 @@ namespace Huggy.Extensions
          string json = await message.Content.ReadAsStringAsync();
          if (message.IsSuccessStatusCode)
          {
-            T data = JsonSerializer.Deserialize<T>(json, JsonSerializerOptions);
+            T data = json == "" || string.IsNullOrEmpty(json)
+               ? default
+               : JsonSerializer.Deserialize<T>(json, JsonSerializerOptions);
             return ReturnOf<T>.CreateSuccessStatusCode((int)message.StatusCode, data);
          }
          ReasonResult reasonResult = JsonSerializer.Deserialize<ReasonResult>(json);

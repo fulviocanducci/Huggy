@@ -14,5 +14,7 @@ namespace Huggy.Models.Contacts
 
       [JsonPropertyName("email")]
       public string Email { get; set; }
+      [JsonPropertyName("obs")]
+      public string Obs { get; set; }
    }
 }

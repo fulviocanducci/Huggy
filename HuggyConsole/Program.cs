@@ -39,14 +39,16 @@ namespace HuggyConsole
 
          //var resu = httpClientHuggy.Contacts.GetAsync(94331700).Result;
 
-         var model = new Huggy.Models.Contacts.ContactCreate
+         var model = new Huggy.Models.Contacts.ContactUpdate
          {
-            Name = "Claudio Luiz",
-            Mobile = "5518996279731",
-            Phone = "5518996279731",
-            Email = "claudio.s2milhas@gmail.com",
+            Id = "93450618",
+            Name = "Eduardo Prietro",
+            Mobile = "5518996132391",
+            Phone = "5518996132391",
+            Email = "eduardo@s2viagens.com",
+            Obs = "Update now super..."
          };
-         var resultC = httpClientHuggy.Contacts.PostAsync(model).Result;
+         var resultC = httpClientHuggy.Contacts.PutAsync(model, 93450618).Result;
 
          var result = httpClientHuggy.Contacts.GetListAsync().Result;
          if (result.IsValid)
