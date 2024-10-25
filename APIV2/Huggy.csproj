@@ -2,23 +2,23 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Title>Huggy</Title>
-    <Description>Huggy v1.0.0</Description>    
-    <RepositoryType>git</RepositoryType>
+    <Title>Canducci Huggy</Title>
+    <Description>Huggy v1.0.0.1</Description>    
+    <RepositoryType>git</RepositoryType>        
+    <PackageId>Canducci.Huggy</PackageId>    
+    <Authors>Canducci</Authors>    
+    <Product>Canducci.Huggy</Product>    
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>    
+    <Version>1.0.0.1</Version>       
+    
   </PropertyGroup>
+ 
 
   <ItemGroup>
-    <Compile Remove="Internals\**" />
-    <EmbeddedResource Remove="Internals\**" />
-    <None Remove="Internals\**" />
-  </ItemGroup>
-
-  
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />    
-    <PackageReference Include="System.Text.Json" Version="8.0.5" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />    
+    <PackageReference Include="System.Text.Json" Version="5.0.2" />
   </ItemGroup>
 
 

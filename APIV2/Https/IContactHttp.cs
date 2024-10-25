@@ -8,8 +8,10 @@ namespace Huggy.Https
    {
       Task<IReturnOf<List<Contact>>> GetListAsync(int? page = null);
       Task<IReturnOf<Contact>> GetAsync(int id);
+      Task<IReturnOf<Contact>> GetAsync(string id);
       Task<IReturnOf<Contact>> PostAsync(ContactCreate model);
       Task<IReturnOf<string>> PutAsync(ContactUpdate model, int id);
+      Task<IReturnOf<string>> PutAsync(ContactUpdate model, string id);
       Task<IReturnOf<string>> DeleteAsync(int id);
    }
 }

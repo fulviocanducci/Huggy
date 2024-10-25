@@ -1,5 +1,3 @@
-
-using Huggy.Extensions;
 namespace HuggyWeb
 {
    public class Program
@@ -16,7 +14,7 @@ namespace HuggyWeb
          builder.Services.AddEndpointsApiExplorer();
          builder.Services.AddSwaggerGen();
          builder.Services.AddHttpClient();
-         builder.Services.AddHuggy(builder.Configuration);
+         //builder.Services.AddHuggy(builder.Configuration);
          WebApplication app = builder.Build();
          if (app.Environment.IsDevelopment())
          {

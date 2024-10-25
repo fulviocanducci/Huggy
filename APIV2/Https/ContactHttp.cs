@@ -59,5 +59,23 @@ namespace Huggy.Https
          HttpResponseMessage message = await _httpClient.PutAsync($"{UrlBase}/{id}", model);
          return await message.ReadOfTypeAsync<string>();
       }
+
+      public async Task<IReturnOf<Contact>> GetAsync(string id)
+      {
+         if (int.TryParse(id, out int _id))
+         {
+            return await GetAsync(_id);
+         }
+         return null;
+      }
+
+      public async Task<IReturnOf<string>> PutAsync(ContactUpdate model, string id)
+      {
+         if (int.TryParse(id, out int _id))
+         {
+            return await PutAsync(model, _id);
+         }
+         return null;
+      }
    }
 }
