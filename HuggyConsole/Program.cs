@@ -1,5 +1,6 @@
 ﻿using Huggy;
 using Huggy.Configurations;
+using Huggy.Models.Flows;
 
 namespace HuggyConsole
 {
@@ -7,26 +8,21 @@ namespace HuggyConsole
    {
       static void Main(string[] args)
       {
-         IConfigurationHuggy configurationHuggy = new ConfigurationHuggy("application/json", "*/*", "be27e5d6a162ca3fca295aabc5946106");
+         IConfigurationHuggy configurationHuggy = new ConfigurationHuggy("application/json", "*/*", "be27e5d6a162ca3fca295aabc5946106", "1fb9f1bf-242f-4229-a238-6a6d9995af43");
          IHttpClientHuggy httpClientHuggy = new HttpClientHuggy(new HttpClient(), configurationHuggy);
          //IReturnOf<Agent> resultById = httpClientHuggy.Agent.GetAsync(153603).Result;
          //IReturnOf<List<AgentList>> resultList = httpClientHuggy.Agent.GetListAsync().Result;
          try
          {
-            var model = new Huggy.Models.Flows.Flow()
+            Flow model = httpClientHuggy.CreateFlow();
+            model.Variables = new Dictionary<string, string>
             {
-               Uuid = "1fb9f1bf-242f-4229-a238-6a6d9995af43",
-               Variables = new Dictionary<string, string>
-               {
-                  ["name"] = "Fúlvio Cezar Canducci Dias",
-                  ["resume"] = $"Passagem Ida LIS x GRU dia 10/01/2025, Companhia TAP com 3 Passageiros",
-                  ["paid"] = "Pago: Entrada de R$ 1000 e 5 boletos de R$ 500",
-                  ["boletos"] = "[1] Boleto - https://www.s2milhas.com.br, [2] Boleto - https://www.s2milhas.com.br"
-               },
-               WhenInAuto = true,
-               WhenInChat = true,
-               WhenWaitForChat = true
+               ["name"] = "Fúlvio Cezar Canducci Dias - Uuid 2",
+               ["resume"] = $"Passagem Ida LIS x GRU dia 10/01/2025, Companhia TAP com 3 Passageiros",
+               ["paid"] = "Pago: Entrada de R$ 1000 e 5 boletos de R$ 500",
+               ["boletos"] = "[1] Boleto - https://www.s2milhas.com.br, [2] Boleto - https://www.s2milhas.com.br"
             };
+
             var result = httpClientHuggy.Flows.PostAsync("422648", "94364563", model).Result;
 
             Console.WriteLine(result.StatusCode);

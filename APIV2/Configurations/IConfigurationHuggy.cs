@@ -5,5 +5,6 @@
       string ContentType { get; }
       string Accept { get; }
       string Authorization { get; }
+      string Uuid { get; }
    }
 }
