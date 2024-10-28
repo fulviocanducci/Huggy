@@ -20,7 +20,7 @@ namespace HuggyWeb.Controllers
       [HttpGet()]
       public async Task<ActionResult> Get()
       {
-         IReturnOf<List<AgentList>> result = await HttpClientHuggy.Agents.GetListAsync(null);
+         IReturnOf<List<AgentList>> result = await HttpClientHuggy.Agents.ListAsync(null);
          return (result.IsValid) ? Ok(result.Data) : BadRequest(result.Reasons);
       }
 
@@ -41,7 +41,7 @@ namespace HuggyWeb.Controllers
             Phone = "5518996279731",
             Email = "claudio.s2milhas@gmail.com",
          };
-         IReturnOf<Contact> result = await HttpClientHuggy.Contacts.PostAsync(model);
+         IReturnOf<Contact> result = await HttpClientHuggy.Contacts.AddAsync(model);
          return (result.IsValid) ? Ok(result.Data) : BadRequest(result.Reasons);
       }
    }

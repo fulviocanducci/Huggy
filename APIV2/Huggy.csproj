@@ -3,15 +3,30 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Title>Canducci Huggy</Title>
-    <Description>Huggy v1.0.0.2</Description>    
+    <Description>Huggy v1.0.0.3</Description>    
     <RepositoryType>git</RepositoryType>        
     <PackageId>Canducci.Huggy</PackageId>    
     <Authors>Canducci</Authors>    
     <Product>Canducci.Huggy</Product>    
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>    
-    <Version>1.0.0.2</Version>       
+    <Version>1.0.0.3</Version>    
+    <PackageReadmeFile>README.md</PackageReadmeFile>    
+    <RepositoryUrl>https://github.com/fulviocanducci/Huggy</RepositoryUrl>    
+    <PackageIcon>huggy-icon.png</PackageIcon>    
+    <PackageProjectUrl>https://github.com/fulviocanducci/Huggy</PackageProjectUrl>       
     
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\huggy-icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
  
 
   <ItemGroup>

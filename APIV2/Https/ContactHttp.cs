@@ -54,7 +54,7 @@ namespace Huggy.Https
             Func<Contact, bool> where = c => c.Mobile == model.Mobile;
             if (contacts.Data.Any() && contacts.Data.Where(where).Any())
             {
-               return ReturnOf<Contact>.CreateSuccessStatusCode(201, contacts.Data.FirstOrDefault(where));
+               return ReturnOf<Contact>.CreateSuccessStatusCode(200, contacts.Data.FirstOrDefault(where));
             }
          }
          HttpResponseMessage message = await _httpClient.PostAsync($"{UrlBase}", model);

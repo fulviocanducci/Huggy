@@ -1,6 +1,5 @@
 ﻿using Huggy;
 using Huggy.Configurations;
-using Huggy.Models.Flows;
 
 namespace HuggyConsole
 {
@@ -12,28 +11,41 @@ namespace HuggyConsole
          IHttpClientHuggy httpClientHuggy = new HttpClientHuggy(new HttpClient(), configurationHuggy);
          //IReturnOf<Agent> resultById = httpClientHuggy.Agent.GetAsync(153603).Result;
          //IReturnOf<List<AgentList>> resultList = httpClientHuggy.Agent.GetListAsync().Result;
-         try
+         //try
+         //{
+         //   Flow model = httpClientHuggy.CreateFlow();
+         //   model.Variables = new Dictionary<string, string>
+         //   {
+         //      ["name"] = "Fúlvio Cezar Canducci Dias - Uuid 2",
+         //      ["resume"] = $"Passagem Ida LIS x GRU dia 10/01/2025, Companhia TAP com 3 Passageiros",
+         //      ["paid"] = "Pago: Entrada de R$ 1000 e 5 boletos de R$ 500",
+         //      ["boletos"] = "[1] Boleto - https://www.s2milhas.com.br, [2] Boleto - https://www.s2milhas.com.br"
+         //   };
+
+         //   var result = httpClientHuggy.Flows.SendAsync("422648", "94364563", model).Result;
+
+         //   Console.WriteLine(result.StatusCode);
+         //   Console.WriteLine(result.Data.ChatID);
+         //   Console.WriteLine(result.Data.Reason);
+         //}
+         //catch (Exception)
+         //{
+
+         //   throw;
+         //}
+
+
+
+         var model = new Huggy.Models.Contacts.ContactCreate
          {
-            Flow model = httpClientHuggy.CreateFlow();
-            model.Variables = new Dictionary<string, string>
-            {
-               ["name"] = "Fúlvio Cezar Canducci Dias - Uuid 2",
-               ["resume"] = $"Passagem Ida LIS x GRU dia 10/01/2025, Companhia TAP com 3 Passageiros",
-               ["paid"] = "Pago: Entrada de R$ 1000 e 5 boletos de R$ 500",
-               ["boletos"] = "[1] Boleto - https://www.s2milhas.com.br, [2] Boleto - https://www.s2milhas.com.br"
-            };
+            Name = "Eduardo Prietro",
+            Mobile = "5518996132391",
+            Phone = "5518996132391",
+            Email = "eduardo@s2viagens.com",
+            Obs = ""
+         };
+         var resultC = httpClientHuggy.Contacts.AddAsync(model).Result;
 
-            var result = httpClientHuggy.Flows.PostAsync("422648", "94364563", model).Result;
-
-            Console.WriteLine(result.StatusCode);
-            Console.WriteLine(result.Data.ChatID);
-            Console.WriteLine(result.Data.Reason);
-         }
-         catch (Exception)
-         {
-
-            throw;
-         }
 
          //var resu = httpClientHuggy.Contacts.GetAsync(94331700).Result;
 
