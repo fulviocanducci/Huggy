@@ -3,13 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Title>Canducci Huggy</Title>
-    <Description>Huggy v1.0.0.1</Description>    
+    <Description>Huggy v1.0.0.2</Description>    
     <RepositoryType>git</RepositoryType>        
     <PackageId>Canducci.Huggy</PackageId>    
     <Authors>Canducci</Authors>    
     <Product>Canducci.Huggy</Product>    
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>    
-    <Version>1.0.0.1</Version>       
+    <Version>1.0.0.2</Version>       
     
   </PropertyGroup>
  

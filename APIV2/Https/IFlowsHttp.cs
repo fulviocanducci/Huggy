@@ -5,6 +5,6 @@ namespace Huggy.Https
 {
    public interface IFlowsHttp
    {
-      Task<IReturnOf<FlowReason>> PostAsync(string flowId, string contactId, Flow model);
+      Task<IReturnOf<FlowReason>> SendAsync(string flowId, string contactId, Flow model);
    }
 }

@@ -15,9 +15,9 @@ namespace Huggy.Https
          _httpClient = httpClient;
       }
 
-      public async Task<IReturnOf<List<AgentList>>> GetListAsync(int? page = null)
+      public async Task<IReturnOf<List<AgentList>>> ListAsync(int? page = null)
       {
-         HttpResponseMessage message = await _httpClient.GetAsync(UrlBase);
+         HttpResponseMessage message = await _httpClient.GetAsync($"{UrlBase}{(page != null ? ($"?page={page}") : "")}");
          return await message.ReadOfTypeAsync<List<AgentList>>();
       }
 
@@ -27,18 +27,18 @@ namespace Huggy.Https
          return await message.ReadOfTypeAsync<Agent>();
       }
 
-      public async Task PostAsync(AgentCreate model)
+      public async Task AddAsync(AgentCreate model)
       {
          HttpResponseMessage message = await _httpClient.PostAsync($"{UrlBase}", model);
          await message.ReadOfTypeAsync<Agent>();
       }
 
-      public async Task PostAsync(string email, int type)
+      public async Task AddAsync(string email, int type)
       {
-         await PostAsync(new AgentCreate(email, type));
+         await AddAsync(new AgentCreate(email, type));
       }
 
-      public async Task<IReturnOf<Agent>> PutAsync(Agent model, int id)
+      public async Task<IReturnOf<Agent>> UpdateAsync(Agent model, int id)
       {
          HttpResponseMessage message = await _httpClient.PutAsync($"{UrlBase}/{id}", model);
          return await message.ReadOfTypeAsync<Agent>();

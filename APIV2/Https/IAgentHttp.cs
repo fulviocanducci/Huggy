@@ -6,10 +6,10 @@ namespace Huggy.Https
 {
    public interface IAgentHttp
    {
-      Task<IReturnOf<List<AgentList>>> GetListAsync(int? page = null);
+      Task<IReturnOf<List<AgentList>>> ListAsync(int? page = null);
       Task<IReturnOf<Agent>> GetAsync(int id);
-      Task PostAsync(AgentCreate model);
-      Task PostAsync(string email, int type);
-      Task<IReturnOf<Agent>> PutAsync(Agent model, int id);
+      Task AddAsync(AgentCreate model);
+      Task AddAsync(string email, int type);
+      Task<IReturnOf<Agent>> UpdateAsync(Agent model, int id);
    }
 }

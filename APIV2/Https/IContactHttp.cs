@@ -6,12 +6,14 @@ namespace Huggy.Https
 {
    public interface IContactHttp
    {
-      Task<IReturnOf<List<Contact>>> GetListAsync(int? page = null);
+      Task<IReturnOf<List<Contact>>> ListAsync(int? page = null);
+      Task<IReturnOf<List<Contact>>> ListAsync(string mobile, int? page = null);
       Task<IReturnOf<Contact>> GetAsync(int id);
       Task<IReturnOf<Contact>> GetAsync(string id);
-      Task<IReturnOf<Contact>> PostAsync(ContactCreate model);
-      Task<IReturnOf<string>> PutAsync(ContactUpdate model, int id);
-      Task<IReturnOf<string>> PutAsync(ContactUpdate model, string id);
+      Task<IReturnOf<Contact>> AddAsync(ContactCreate model);
+      Task<IReturnOf<string>> UpdateAsync(ContactUpdate model, int id);
+      Task<IReturnOf<string>> UpdateAsync(ContactUpdate model, string id);
       Task<IReturnOf<string>> DeleteAsync(int id);
+      Task<IReturnOf<string>> DeleteAsync(string id);
    }
 }
