@@ -9,7 +9,7 @@
     <Authors>Canducci</Authors>    
     <Product>Canducci.Huggy</Product>    
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>    
-    <Version>1.0.0.3</Version>    
+    <Version>1.0.0.4</Version>    
     <PackageReadmeFile>README.md</PackageReadmeFile>    
     <RepositoryUrl>https://github.com/fulviocanducci/Huggy</RepositoryUrl>    
     <PackageIcon>huggy-icon.png</PackageIcon>    

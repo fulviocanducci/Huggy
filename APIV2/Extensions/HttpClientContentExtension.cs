@@ -34,8 +34,7 @@ namespace Huggy.Extensions
                : JsonSerializer.Deserialize<T>(json, JsonSerializerOptions);
             return ReturnOf<T>.CreateSuccessStatusCode((int)message.StatusCode, data);
          }
-         ReasonResult reasonResult = JsonSerializer.Deserialize<ReasonResult>(json);
-         return ReturnOf<T>.CreateErrorStatusCode((int)message.StatusCode, reasonResult.Reason);
+         return ReturnOf<T>.CreateErrorStatusCode((int)message.StatusCode, message.ReasonPhrase);
       }
 
       public static async Task<HttpResponseMessage> PostAsync<T>(this HttpClient client, string url, T model) where T : class, new()
